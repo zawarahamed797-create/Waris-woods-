@@ -9,6 +9,11 @@
         :root { --primary: #3d2b1f; --accent: #d4a373; --bg: #fdfaf5; --success: #2ecc71; --steel: #4a4e69; }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: #333; }
         
+        /* Scrolling Ticker */
+        .ticker-wrap { background: var(--accent); color: var(--primary); padding: 5px 0; font-weight: bold; overflow: hidden; white-space: nowrap; }
+        .ticker { display: inline-block; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
         /* Header */
         header { background: var(--primary); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
         .logo { font-size: 22px; font-weight: 900; color: var(--accent); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
@@ -24,40 +29,37 @@
         .hero h1 { margin: 0; font-size: 2.2rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
         .hero p { color: var(--accent); font-weight: bold; font-size: 1.1rem; margin-top: 5px; }
 
-        /* Transport Box */
+        /* Transport & Location Boxes */
         .transport-container { max-width: 1100px; margin: -30px auto 20px; padding: 0 20px; position: relative; z-index: 10; }
-        .transport-box { background: #fff; border-top: 4px solid var(--accent); padding: 15px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .transport-header { font-weight: 800; color: var(--primary); margin-bottom: 12px; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+        .info-box { background: #fff; border-top: 4px solid var(--accent); padding: 15px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .info-header { font-weight: 800; color: var(--primary); margin-bottom: 12px; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
         .driver-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
         .driver-card { background: #fcf8f3; padding: 10px 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #efe5d9; }
         .btn-call { background: var(--primary); color: white; text-decoration: none; padding: 6px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; }
 
         /* Products Grid */
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .section-title { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 25px; border-left: 6px solid var(--accent); padding-left: 15px; }
+        .section-title { font-size: 24px; font-weight: 800; color: var(--primary); margin: 35px 0 25px; border-left: 6px solid var(--accent); padding-left: 15px; }
         
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
-        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
+        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; position: relative; }
         .card:hover { transform: translateY(-8px); border-color: var(--accent); }
+        .badge { position: absolute; top: 10px; left: 10px; background: #e74c3c; color: white; padding: 4px 10px; border-radius: 5px; font-size: 12px; font-weight: bold; }
         .card img { width: 100%; height: 180px; object-fit: cover; }
         .card-body { padding: 15px; }
         .card-title { font-size: 17px; font-weight: 700; color: var(--primary); margin: 0; }
         .card-price { color: var(--success); font-weight: 800; font-size: 20px; margin: 10px 0; }
+        .old-price { text-decoration: line-through; color: #999; font-size: 14px; margin-right: 5px; }
         .btn-add { width: 100%; background: var(--accent); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
 
-        /* Cart Panel */
+        /* Cart & WhatsApp Styles remain same */
         #cart-panel { position: fixed; right: -400px; top: 0; width: 380px; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2000; padding: 20px; display: flex; flex-direction: column; box-sizing: border-box; }
         #cart-panel.active { right: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
         .cart-items-list { flex-grow: 1; overflow-y: auto; margin-top: 15px; }
         .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f9f9f9; }
-        
         .summary-box { background: #fdfaf5; padding: 15px; border-radius: 10px; border: 1px solid #eee; margin-bottom: 15px; }
-        .summary-box p { display: flex; justify-content: space-between; margin: 5px 0; font-weight: 600; font-size: 14px; }
-        
-        /* Fixed WhatsApp Button */
-        .whatsapp-btn { background: #25D366; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 17px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
-
+        .whatsapp-btn { background: #25D366; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 17px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px; }
         .cart-btn-float { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1500; box-shadow: 0 8px 25px rgba(0,0,0,0.2); font-size: 22px; border: 2px solid var(--accent); }
         .cart-count { position: absolute; top: -5px; right: -5px; background: var(--accent); color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 11px; display: flex; justify-content: center; align-items: center; font-weight: bold; }
 
@@ -65,6 +67,12 @@
     </style>
 </head>
 <body>
+
+<div class="ticker-wrap">
+    <div class="ticker">
+        🔥 Special Offer: Get 10% Discount on Full Wood Fitting | 📞 Waris Wood Works: 0348 8222368 | 📍 Visit our Shop for Designer Hardware | 🚚 Fast Delivery to Your City!
+    </div>
+</div>
 
 <header>
     <a href="#" class="logo">WARIS <span>WOOD WORKS</span></a>
@@ -77,8 +85,8 @@
 </div>
 
 <div class="transport-container">
-    <div class="transport-box">
-        <div class="transport-header"><i class="fas fa-shuttle-van"></i> Transport Partners</div>
+    <div class="info-box">
+        <div class="info-header"><i class="fas fa-shuttle-van"></i> Transport Partners</div>
         <div class="driver-grid">
             <div class="driver-card">
                 <div class="driver-info"><b>Aslam Khan</b><br><span>Local Loader</span></div>
@@ -90,9 +98,31 @@
             </div>
         </div>
     </div>
+
+    <div class="info-box">
+        <div class="info-header"><i class="fas fa-map-marker-alt"></i> Shop Location</div>
+        <div style="font-size: 14px; color: #555; line-height: 1.6;">
+            <p><b>Address:</b> Main Road, Near Al-Noor Plaza, City Wood Market.</p>
+            <a href="https://goo.gl/maps/example" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: none;"><i class="fas fa-directions"></i> Get Directions on Google Maps</a>
+        </div>
+    </div>
 </div>
 
 <div class="container">
+    <div class="section-title">Special Bundle Deals</div>
+    <div class="grid">
+        <div class="card">
+            <div class="badge">SALE!</div>
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400" alt="Full Kitchen Bundle">
+            <div class="card-body">
+                <h3 class="card-title">Full Kitchen Fitting Kit</h3>
+                <small>Hinges + Slides + Handles (Full Set)</small>
+                <div class="card-price"><span class="old-price">Rs. 15,000</span> Rs. 12,500</div>
+                <button class="btn-add" onclick="addToCart('Kitchen Fitting Kit', 12500)">Add Bundle</button>
+            </div>
+        </div>
+    </div>
+
     <div class="section-title">Latest Woods Hardware</div>
     <div class="grid">
         <div class="card">
@@ -134,14 +164,11 @@
         <h2 style="margin:0; font-size:18px;"><i class="fas fa-clipboard-list"></i> Your Order</h2>
         <button onclick="toggleCart()" style="border:none; background:none; font-size:24px; cursor:pointer;">&times;</button>
     </div>
-    
     <div class="cart-items-list" id="cart-list"></div>
-    
     <div class="summary-box" id="summary-section" style="display:none;">
         <p>Total Bill: <span>Rs. <span id="total">0</span></span></p>
         <p style="color: var(--accent);">Booking Advance (50%): <span>Rs. <span id="adv">0</span></span></p>
     </div>
-    
     <button class="whatsapp-btn" onclick="sendWhatsApp()">
         <i class="fab fa-whatsapp"></i> Confirm Order on WhatsApp
     </button>
@@ -150,21 +177,18 @@
 <script>
     let cart = [];
     function toggleCart() { document.getElementById('cart-panel').classList.toggle('active'); }
-
     function addToCart(name, price) {
         let item = cart.find(i => i.name === name);
         item ? item.quantity++ : cart.push({name, price, quantity: 1});
         updateUI();
         if(!document.getElementById('cart-panel').classList.contains('active')) toggleCart();
     }
-
     function updateUI() {
         const list = document.getElementById('cart-list');
         const summary = document.getElementById('summary-section');
         list.innerHTML = "";
         let total = 0;
         let itemsCount = 0;
-        
         if(cart.length > 0) {
             summary.style.display = "block";
             cart.forEach((item) => {
@@ -180,12 +204,10 @@
             list.innerHTML = "<p style='text-align:center; color:#999; margin-top:30px;'>No items in cart.</p>";
             summary.style.display = "none";
         }
-        
         document.getElementById('count').innerText = itemsCount;
         document.getElementById('total').innerText = total.toLocaleString();
         document.getElementById('adv').innerText = (total * 0.5).toLocaleString();
     }
-
     function sendWhatsApp() {
         if(cart.length === 0) return alert("Pehle saman add karein!");
         let number = "923488222368"; 
@@ -201,5 +223,4 @@
     }
 </script>
 </body>
-          </html>
-
+</html>
