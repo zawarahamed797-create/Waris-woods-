@@ -18,24 +18,31 @@
         header { background: var(--primary); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
         .logo { font-size: 22px; font-weight: 900; color: var(--accent); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
         
-        .contact-top { font-size: 14px; font-weight: 600; background: var(--accent); color: var(--primary) !important; padding: 8px 18px; border-radius: 20px; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-
-        /* Hero Banner - Updated with your file name */
-        .hero { 
-            background: url('warisbanner.jpg'); 
-            height: 300px; 
-            background-size: cover; 
-            background-position: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            border-bottom: 4px solid var(--accent);
+        /* Call Button Style in Header */
+        .contact-top { 
+            font-size: 14px; 
+            font-weight: 600; 
+            background: var(--accent); 
+            color: var(--primary) !important; 
+            padding: 8px 18px; 
+            border-radius: 20px; 
+            border: none;
+            transition: 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        /* ہیرو ٹیکسٹ کو ہٹا دیا گیا ہے کیونکہ وہ آپ کی تصویر کے اوپر پہلے سے لکھا ہے */
-        .hero h1, .hero p { display: none; }
+        .contact-top:hover { transform: scale(1.05); background: white; }
 
-        /* Remaining Styles Stay Exactly Same */
+        /* Hero Banner */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=1000'); 
+            height: 250px; background-size: cover; background-position: center; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            color: white; text-align: center; border-bottom: 4px solid var(--accent);
+        }
+        .hero h1 { margin: 0; font-size: 2.2rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { color: var(--accent); font-weight: bold; font-size: 1.1rem; margin-top: 5px; }
+
+        /* Boxes & Grids */
         .transport-container { max-width: 1100px; margin: -30px auto 20px; padding: 0 20px; position: relative; z-index: 10; }
         .info-box { background: #fff; border-top: 4px solid var(--accent); padding: 15px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 20px; }
         .info-header { font-weight: 800; color: var(--primary); margin-bottom: 12px; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
@@ -43,51 +50,74 @@
         .driver-card { background: #fcf8f3; padding: 10px 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #efe5d9; }
         .btn-call { background: var(--primary); color: white; text-decoration: none; padding: 6px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; }
 
+        /* Product Styles */
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .section-title { font-size: 24px; font-weight: 800; color: var(--primary); margin: 35px 0 25px; border-left: 6px solid var(--accent); padding-left: 15px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
         .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; position: relative; }
+        .card:hover { transform: translateY(-8px); border-color: var(--accent); }
+        .badge { position: absolute; top: 10px; left: 10px; background: #e74c3c; color: white; padding: 4px 10px; border-radius: 5px; font-size: 12px; font-weight: bold; }
         .card img { width: 100%; height: 180px; object-fit: cover; }
         .card-body { padding: 15px; }
         .card-title { font-size: 17px; font-weight: 700; color: var(--primary); margin: 0; }
         .card-price { color: var(--success); font-weight: 800; font-size: 20px; margin: 10px 0; }
+        .old-price { text-decoration: line-through; color: #999; font-size: 14px; margin-right: 5px; }
         .btn-add { width: 100%; background: var(--accent); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
 
+        /* Cart Panel */
         #cart-panel { position: fixed; right: -400px; top: 0; width: 380px; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2000; padding: 20px; display: flex; flex-direction: column; box-sizing: border-box; }
         #cart-panel.active { right: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
         .cart-items-list { flex-grow: 1; overflow-y: auto; margin-top: 15px; }
         .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f9f9f9; }
         .summary-box { background: #fdfaf5; padding: 15px; border-radius: 10px; border: 1px solid #eee; margin-bottom: 15px; }
-        .whatsapp-btn { background: #25D366; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 17px; border: none; cursor: pointer; width: 100%; }
+        .whatsapp-btn { background: #25D366; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 17px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px; }
         .cart-btn-float { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1500; box-shadow: 0 8px 25px rgba(0,0,0,0.2); font-size: 22px; border: 2px solid var(--accent); }
         .cart-count { position: absolute; top: -5px; right: -5px; background: var(--accent); color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 11px; display: flex; justify-content: center; align-items: center; font-weight: bold; }
-        @media (max-width: 500px) { #cart-panel { width: 100%; } .hero { height: 200px; } }
+
+        @media (max-width: 500px) { #cart-panel { width: 100%; } header { padding: 10px 3%; } .logo { font-size: 16px; } }
     </style>
 </head>
 <body>
 
 <div class="ticker-wrap">
     <div class="ticker">
-        🔥 Special Offer: Get 10% Discount on Full Wood Fitting | 📞 Waris Wood Works: +92 313 0781469 | 📍 Phalia Road, Mandi Bahauddin
+        🔥 Special Offer: Get 10% Discount on Full Wood Fitting | 📞 Waris Wood Works: +92 313 0781469 | 📍 Visit our Shop for Designer Hardware | 🚚 Fast Delivery to Your City!
     </div>
 </div>
 
 <header>
     <a href="#" class="logo">WARIS <span>WOOD WORKS</span></a>
-    <a href="tel:+923130781469" class="contact-top"><i class="fas fa-phone"></i> Call Now</a>
+    <a href="tel:+923130781469" class="contact-top" style="text-decoration: none;">
+        <i class="fas fa-phone"></i> Call Now
+    </a>
 </header>
 
-<div class="hero"></div>
+<div class="hero">
+    <h1>Waris Woods & Hardware</h1>
+    <p>Designer Fittings & Wood Works Accessories</p>
+</div>
 
 <div class="transport-container">
     <div class="info-box">
         <div class="info-header"><i class="fas fa-shuttle-van"></i> Transport Partners</div>
         <div class="driver-grid">
             <div class="driver-card">
-                <div class="driver-info"><b>Local Loader</b><br><span>Mandi Bahauddin</span></div>
-                <a href="tel:03130781469" class="btn-call">Call</a>
+                <div class="driver-info"><b>Aslam Khan</b><br><span>Local Loader</span></div>
+                <a href="tel:03210000000" class="btn-call">Call</a>
             </div>
+            <div class="driver-card">
+                <div class="driver-info"><b>Irfan Jutt</b><br><span>City Delivery</span></div>
+                <a href="tel:03210000000" class="btn-call">Call</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <div class="info-header"><i class="fas fa-map-marker-alt"></i> Shop Location</div>
+        <div style="font-size: 14px; color: #555; line-height: 1.6;">
+            <p><b>Address:</b> Phalia Road near Waris Hospital Mandi Bahauddin.</p>
+            <a href="https://maps.app.goo.gl/7zpUFVsp81G78ApE8?g_st=ac" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: none;"><i class="fas fa-directions"></i> Get Directions on Google Maps</a>
         </div>
     </div>
 </div>
@@ -96,11 +126,46 @@
     <div class="section-title">Special Bundle Deals</div>
     <div class="grid">
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1517646288021-2287f7a77545?q=80&w=400" alt="Hardware Kit">
+            <div class="badge">SALE!</div>
+            <img src="doorfitting.jpg" alt="Full Kitchen Bundle">
             <div class="card-body">
-                <h3 class="card-title">Door Fitting Hardware Kit</h3>
-                <div class="card-price">Rs. 3,400</div>
-                <button class="btn-add" onclick="addToCart('Door Fitting Kit', 3400)">Add Bundle</button>
+                <h3 class="card-title">“Door Fitting Hardware Kit</h3>
+                <small>4 × 4" Door Hinges (Qabzy)
+1 × 8" Door Bolt (Chatkhni / Latch)
+24 × 1.5" Screws+24 × 1/2"  Screws
+1 × Handle Lock+24 × 1" Screws</small>
+                <div class="card-price"><span class="old-price">Rs. 4000</span> Rs. 3400</div>
+                <button class="btn-add" onclick="addToCart('Kitchen Fitting Kit', 12500)">Add Bundle</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Latest Woods Hardware</div>
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1586864387917-f53bc2644349?q=80&w=400" alt="Screws">
+            <div class="card-body">
+                <h3 class="card-title">MDF Special Black Screws</h3>
+                <div class="card-price">Rs. 250</div>
+                <button class="btn-add" onclick="addToCart('Black Screws Box', 250)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1517646288021-2287f7a77545?q=80&w=400" alt="Hinges">
+            <div class="card-body">
+                <h3 class="card-title">Hydraulic Auto Hinges</h3>
+                <div class="card-price">Rs. 580</div>
+                <button class="btn-add" onclick="addToCart('Auto Hinges Pair', 580)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1590470249138-be14ff53d5cf?q=80&w=400" alt="Slides">
+            <div class="card-body">
+                <h3 class="card-title">18" Drawer Slides (Steel)</h3>
+                <div class="card-price">Rs. 1,900</div>
+                <button class="btn-add" onclick="addToCart('Steel Slides 18in', 1900)">Add to Cart</button>
             </div>
         </div>
     </div>
@@ -112,12 +177,18 @@
 </div>
 
 <div id="cart-panel">
-    <div class="cart-header"><h2>Your Order</h2><button onclick="toggleCart()">×</button></div>
+    <div class="cart-header">
+        <h2 style="margin:0; font-size:18px;"><i class="fas fa-clipboard-list"></i> Your Order</h2>
+        <button onclick="toggleCart()" style="border:none; background:none; font-size:24px; cursor:pointer;">×</button>
+    </div>
     <div class="cart-items-list" id="cart-list"></div>
     <div class="summary-box" id="summary-section" style="display:none;">
-        <p>Total: Rs. <span id="total">0</span></p>
+        <p>Total Bill: <span>Rs. <span id="total">0</span></span></p>
+        <p style="color: var(--accent);">Booking Advance (50%): <span>Rs. <span id="adv">0</span></span></p>
     </div>
-    <button class="whatsapp-btn" onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Order on WhatsApp</button>
+    <button class="whatsapp-btn" onclick="sendWhatsApp()">
+        <i class="fab fa-whatsapp"></i> Confirm Order on WhatsApp
+    </button>
 </div>
 
 <script>
@@ -132,24 +203,42 @@
     function updateUI() {
         const list = document.getElementById('cart-list');
         const summary = document.getElementById('summary-section');
-        list.innerHTML = ""; let total = 0; let itemsCount = 0;
+        list.innerHTML = "";
+        let total = 0;
+        let itemsCount = 0;
         if(cart.length > 0) {
             summary.style.display = "block";
             cart.forEach((item) => {
-                total += (item.price * item.quantity);
+                let lineTotal = item.price * item.quantity;
+                total += lineTotal;
                 itemsCount += item.quantity;
-                list.innerHTML += `<div class="cart-item"><div><b>${item.name}</b></div><b>Rs.${(item.price * item.quantity).toLocaleString()}</b></div>`;
+                list.innerHTML += `<div class="cart-item">
+                    <div><b>${item.name}</b><br><small>${item.quantity} x Rs.${item.price}</small></div>
+                    <b style="color:var(--success)">Rs.${lineTotal.toLocaleString()}</b>
+                </div>`;
             });
+        } else {
+            list.innerHTML = "<p style='text-align:center; color:#999; margin-top:30px;'>No items in cart.</p>";
+            summary.style.display = "none";
         }
         document.getElementById('count').innerText = itemsCount;
         document.getElementById('total').innerText = total.toLocaleString();
+        document.getElementById('adv').innerText = (total * 0.5).toLocaleString();
     }
     function sendWhatsApp() {
-        if(cart.length === 0) return alert("Empty Cart!");
-        let text = "*WARIS WOOD WORKS - NEW ORDER*%0A";
-        cart.forEach(item => text += `- ${item.name} (Qty: ${item.quantity})%0A`);
-        window.open(`https://wa.me/923130781469?text=${text}`, '_blank');
+        if(cart.length === 0) return alert("Pehle saman add karein!");
+        let number = "923130781469"; 
+        let text = "*WARIS WOODS WORKS - NEW ORDER*%0A----------------------------%0A";
+        let total = 0;
+        cart.forEach((item) => {
+            text += `- ${item.name} (Qty: ${item.quantity})%0A`;
+            total += (item.price * item.quantity);
+        });
+        text += "----------------------------%0A";
+        text += `*Bill Total:* Rs. ${total.toLocaleString()}%0A*Advance (50%):* Rs. ${(total*0.5).toLocaleString()}`;
+        window.open(`https://wa.me/${number}?text=${text}`, '_blank');
     }
 </script>
 </body>
 </html>
+File ka name warisbanner.jpg ha or koe cheez Chang nahi karna
