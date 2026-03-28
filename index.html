@@ -32,15 +32,22 @@
         }
         .contact-top:hover { transform: scale(1.05); background: white; }
 
-        /* Hero Banner */
+        /* Hero Banner - Updated with warisbanner.jpg */
         .hero { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=1000'); 
-            height: 250px; background-size: cover; background-position: center; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            color: white; text-align: center; border-bottom: 4px solid var(--accent);
+            background: url('warisbanner.jpg'); 
+            height: 350px; 
+            background-size: cover; 
+            background-position: center; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            color: white; 
+            text-align: center; 
+            border-bottom: 4px solid var(--accent);
         }
-        .hero h1 { margin: 0; font-size: 2.2rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .hero p { color: var(--accent); font-weight: bold; font-size: 1.1rem; margin-top: 5px; }
+        /* Hiding overlay text since it's already in your image */
+        .hero h1, .hero p { display: none; }
 
         /* Boxes & Grids */
         .transport-container { max-width: 1100px; margin: -30px auto 20px; padding: 0 20px; position: relative; z-index: 10; }
@@ -75,7 +82,7 @@
         .cart-btn-float { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1500; box-shadow: 0 8px 25px rgba(0,0,0,0.2); font-size: 22px; border: 2px solid var(--accent); }
         .cart-count { position: absolute; top: -5px; right: -5px; background: var(--accent); color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 11px; display: flex; justify-content: center; align-items: center; font-weight: bold; }
 
-        @media (max-width: 500px) { #cart-panel { width: 100%; } header { padding: 10px 3%; } .logo { font-size: 16px; } }
+        @media (max-width: 500px) { #cart-panel { width: 100%; } header { padding: 10px 3%; } .logo { font-size: 16px; } .hero { height: 200px; } }
     </style>
 </head>
 <body>
@@ -129,13 +136,10 @@
             <div class="badge">SALE!</div>
             <img src="doorfitting.jpg" alt="Full Kitchen Bundle">
             <div class="card-body">
-                <h3 class="card-title">“Door Fitting Hardware Kit</h3>
-                <small>4 × 4" Door Hinges (Qabzy)
-1 × 8" Door Bolt (Chatkhni / Latch)
-24 × 1.5" Screws+24 × 1/2"  Screws
-1 × Handle Lock+24 × 1" Screws</small>
+                <h3 class="card-title">Door Fitting Hardware Kit</h3>
+                <small>4 × 4" Door Hinges | 1 × 8" Door Bolt | Screws | Handle Lock</small>
                 <div class="card-price"><span class="old-price">Rs. 4000</span> Rs. 3400</div>
-                <button class="btn-add" onclick="addToCart('Kitchen Fitting Kit', 12500)">Add Bundle</button>
+                <button class="btn-add" onclick="addToCart('Door Fitting Kit', 3400)">Add Bundle</button>
             </div>
         </div>
     </div>
@@ -241,4 +245,3 @@
 </script>
 </body>
 </html>
-File ka name warisbanner.jpg ha or koe cheez Chang nahi karna
