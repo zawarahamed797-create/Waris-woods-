@@ -1,202 +1,157 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waris Woods Works & Hardware Store</title>
+    <title>گجرات ہارڈ ویئر اسٹور - منڈی بہاؤالدین</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #3d2b1f; --accent: #d4a373; --bg: #fdfaf5; --success: #2ecc71; --steel: #4a4e69; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: #333; }
+        :root { --primary: #1a2a3a; --accent: #c5a059; --bg: #fdfaf5; --success: #27ae60; --dark: #111; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: #333; text-align: right; overflow-x: hidden; }
         
         /* Scrolling Ticker */
-        .ticker-wrap { background: var(--accent); color: var(--primary); padding: 5px 0; font-weight: bold; overflow: hidden; white-space: nowrap; }
-        .ticker { display: inline-block; animation: marquee 20s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .ticker-wrap { background: var(--accent); color: white; padding: 8px 0; font-weight: bold; overflow: hidden; white-space: nowrap; position: relative; z-index: 1001; }
+        .ticker { display: inline-block; animation: marquee 25s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
-        /* Header */
+        /* Header & Search */
         header { background: var(--primary); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .logo { font-size: 22px; font-weight: 900; color: var(--accent); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+        .logo { font-size: 20px; font-weight: 900; color: var(--accent); text-decoration: none; text-transform: uppercase; }
         
-        /* Call Button Style in Header */
-        .contact-top { 
-            font-size: 14px; 
-            font-weight: 600; 
-            background: var(--accent); 
-            color: var(--primary) !important; 
-            padding: 8px 18px; 
-            border-radius: 20px; 
-            border: none;
-            transition: 0.3s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        .contact-top:hover { transform: scale(1.05); background: white; }
+        .search-container { flex-grow: 1; margin: 0 20px; position: relative; max-width: 400px; }
+        .search-container input { width: 100%; padding: 10px 40px 10px 15px; border-radius: 25px; border: none; outline: none; font-size: 14px; text-align: right; }
+        .search-container i { position: absolute; right: 15px; top: 12px; color: #888; }
 
-        /* Hero Banner - Updated with warisbanner.jpg */
+        /* Hero Banner */
         .hero { 
-            background: url('warisbanner.jpg'); 
-            height: 350px; 
-            background-size: cover; 
-            background-position: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            color: white; 
-            text-align: center; 
-            border-bottom: 4px solid var(--accent);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1470&auto=format&fit=crop'); 
+            height: 250px; background-size: cover; background-position: center; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
         }
-        /* Hiding overlay text since it's already in your image */
-        .hero h1, .hero p { display: none; }
+        .hero h1 { font-size: 30px; margin: 0; color: var(--accent); }
 
-        /* Boxes & Grids */
-        .transport-container { max-width: 1100px; margin: -30px auto 20px; padding: 0 20px; position: relative; z-index: 10; }
-        .info-box { background: #fff; border-top: 4px solid var(--accent); padding: 15px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .info-header { font-weight: 800; color: var(--primary); margin-bottom: 12px; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
-        .driver-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
-        .driver-card { background: #fcf8f3; padding: 10px 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #efe5d9; }
-        .btn-call { background: var(--primary); color: white; text-decoration: none; padding: 6px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; }
+        /* Info Boxes */
+        .info-container { max-width: 1100px; margin: -40px auto 20px; padding: 0 20px; position: relative; z-index: 10; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .info-box { background: #fff; border-top: 4px solid var(--accent); padding: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .info-header { font-weight: 800; color: var(--primary); margin-bottom: 15px; font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        
+        .driver-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .driver-card { background: #fcf8f3; padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #efe5d9; font-size: 13px; }
+        .btn-call-sm { background: var(--primary); color: white; text-decoration: none; padding: 5px 10px; border-radius: 5px; font-weight: bold; }
 
-        /* Product Styles */
+        /* Product Grid */
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .section-title { font-size: 24px; font-weight: 800; color: var(--primary); margin: 35px 0 25px; border-left: 6px solid var(--accent); padding-left: 15px; }
+        .section-title { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 25px; border-right: 6px solid var(--accent); padding-right: 15px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
-        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; position: relative; }
+        
+        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; position: relative; text-align: center; }
         .card:hover { transform: translateY(-8px); border-color: var(--accent); }
-        .badge { position: absolute; top: 10px; left: 10px; background: #e74c3c; color: white; padding: 4px 10px; border-radius: 5px; font-size: 12px; font-weight: bold; }
-        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .card img { width: 100%; height: 160px; object-fit: contain; background: #fafafa; padding: 10px; box-sizing: border-box; transition: 0.3s; }
         .card-body { padding: 15px; }
-        .card-title { font-size: 17px; font-weight: 700; color: var(--primary); margin: 0; }
+        
+        /* Color Selector Styling */
+        .color-options { display: flex; gap: 8px; justify-content: center; margin: 10px 0; }
+        .color-dot { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid #ddd; transition: 0.2s; }
+        .color-dot:hover { transform: scale(1.2); border-color: var(--accent); }
+        .selected-color-text { font-size: 11px; color: var(--accent); font-weight: bold; margin-bottom: 5px; }
+
         .card-price { color: var(--success); font-weight: 800; font-size: 20px; margin: 10px 0; }
-        .old-price { text-decoration: line-through; color: #999; font-size: 14px; margin-right: 5px; }
-        .btn-add { width: 100%; background: var(--accent); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
+        .btn-add { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-add:hover { background: var(--accent); }
+
+        /* Floating Cart */
+        .cart-btn-float { position: fixed; bottom: 30px; left: 30px; background: var(--primary); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1500; box-shadow: 0 8px 25px rgba(0,0,0,0.3); font-size: 24px; border: 2px solid var(--accent); }
+        .cart-count { position: absolute; top: -5px; right: -5px; background: var(--accent); color: white; width: 25px; height: 25px; border-radius: 50%; font-size: 12px; display: flex; justify-content: center; align-items: center; font-weight: bold; }
 
         /* Cart Panel */
-        #cart-panel { position: fixed; right: -400px; top: 0; width: 380px; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2000; padding: 20px; display: flex; flex-direction: column; box-sizing: border-box; }
-        #cart-panel.active { right: 0; }
+        #cart-panel { position: fixed; left: -400px; top: 0; width: 350px; height: 100%; background: white; box-shadow: 10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2000; padding: 20px; display: flex; flex-direction: column; box-sizing: border-box; }
+        #cart-panel.active { left: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
-        .cart-items-list { flex-grow: 1; overflow-y: auto; margin-top: 15px; }
-        .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f9f9f9; }
-        .summary-box { background: #fdfaf5; padding: 15px; border-radius: 10px; border: 1px solid #eee; margin-bottom: 15px; }
-        .whatsapp-btn { background: #25D366; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 17px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px; }
-        .cart-btn-float { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1500; box-shadow: 0 8px 25px rgba(0,0,0,0.2); font-size: 22px; border: 2px solid var(--accent); }
-        .cart-count { position: absolute; top: -5px; right: -5px; background: var(--accent); color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 11px; display: flex; justify-content: center; align-items: center; font-weight: bold; }
+        .whatsapp-btn { background: #25D366; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 18px; border: none; cursor: pointer; width: 100%; margin-top: auto; }
 
-        @media (max-width: 500px) { #cart-panel { width: 100%; } header { padding: 10px 3%; } .logo { font-size: 16px; } .hero { height: 200px; } }
+        @media (max-width: 600px) { header { flex-direction: column; gap: 10px; } .search-container { width: 100%; } #cart-panel { width: 100%; } }
     </style>
 </head>
 <body>
 
 <div class="ticker-wrap">
     <div class="ticker">
-        🔥 Special Offer: Get 10% Discount on Full Wood Fitting | 📞 Waris Wood Works: +92 313 0781469 | 📍 Visit our Shop for Designer Hardware | 🚚 Fast Delivery to Your City!
+        🔥 گجرات ہارڈ ویئر اسٹور منڈی بہاؤالدین: تمام کچن ایکسیسریز پر خصوصی رعایت | 🚚 فاسٹ ڈلیوری | 📞 رابطہ کریں: 0313-0781469
     </div>
 </div>
 
 <header>
-    <a href="#" class="logo">WARIS <span>WOOD WORKS</span></a>
-    <a href="tel:+923130781469" class="contact-top" style="text-decoration: none;">
-        <i class="fas fa-phone"></i> Call Now
-    </a>
+    <a href="#" class="logo">GUJRAT <span>HARDWARE</span></a>
+    <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="آئٹم یا رنگ تلاش کریں..." onkeyup="filterProducts()">
+    </div>
+    <a href="tel:+923130781469" class="btn-call-sm" style="background:var(--accent); padding:10px 15px;">0313-0781469</a>
 </header>
 
 <div class="hero">
-    <h1>Waris Woods & Hardware</h1>
-    <p>Designer Fittings & Wood Works Accessories</p>
+    <h1>گجرات کچن ہارڈ ویئر</h1>
+    <p>منڈی بہاؤالدین میں کچن الماری ہارڈ ویئر کے ماہر</p>
 </div>
 
-<div class="transport-container">
+<div class="info-container">
     <div class="info-box">
-        <div class="info-header"><i class="fas fa-shuttle-van"></i> Transport Partners</div>
+        <div class="info-header"><i class="fas fa-truck"></i> ٹرانسپورٹ ڈلیوری</div>
         <div class="driver-grid">
-            <div class="driver-card">
-                <div class="driver-info"><b>Aslam Khan</b><br><span>Local Loader</span></div>
-                <a href="tel:03210000000" class="btn-call">Call</a>
-            </div>
-            <div class="driver-card">
-                <div class="driver-info"><b>Irfan Jutt</b><br><span>City Delivery</span></div>
-                <a href="tel:03210000000" class="btn-call">Call</a>
-            </div>
+            <div class="driver-card"><div>اسلم خان<br><small>لوکل</small></div><a href="tel:03130781469" class="btn-call-sm">کال</a></div>
+            <div class="driver-card"><div>عرفان جٹ<br><small>سٹی</small></div><a href="tel:03130781469" class="btn-call-sm">کال</a></div>
         </div>
     </div>
-
     <div class="info-box">
-        <div class="info-header"><i class="fas fa-map-marker-alt"></i> Shop Location</div>
-        <div style="font-size: 14px; color: #555; line-height: 1.6;">
-            <p><b>Address:</b> Phalia Road near Waris Hospital Mandi Bahauddin.</p>
-            <a href="https://maps.app.goo.gl/7zpUFVsp81G78ApE8?g_st=ac" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: none;"><i class="fas fa-directions"></i> Get Directions on Google Maps</a>
-        </div>
+        <div class="info-header"><i class="fas fa-map-marker-alt"></i> دکان کا پتہ</div>
+        <p style="font-size: 14px; margin: 0;">پھالیہ روڈ، نزد وارث ہسپتال، منڈی بہاؤالدین۔</p>
+        <a href="#" style="color:var(--accent); font-weight:bold; font-size:13px; text-decoration:none;">گوگل میپ پر راستہ دیکھیں</a>
     </div>
 </div>
 
 <div class="container">
-    <div class="section-title">Special Bundle Deals</div>
-    <div class="grid">
-        <div class="card">
-            <div class="badge">SALE!</div>
-            <img src="doorfitting.jpg" alt="Full Kitchen Bundle">
-            <div class="card-body">
-                <h3 class="card-title">Door Fitting Hardware Kit</h3>
-                <small>4 × 4" Door Hinges (Qabzy),
-1 × 8" Door Bolt (Chatkhni / Latch),
-24 × 1.5" Screws,
-24 × 1/2" Machine Screws,
-1 × Handle Lock Set,
-24 × 1" Screws.
-                </small>
-                <div class="card-price"><span class="old-price">Rs. 4000</span> Rs. 3400</div>
-                <button class="btn-add" onclick="addToCart('Door Fitting Kit', 3400)">Add Bundle</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-    <div class="badge">SALE!</div>
-    <img src="apki-tasveer.jpg" alt="Product Name">
-    <div class="card-body">
-        <h3 class="card-title">پروڈکٹ کا نام یہاں لکھیں</h3>
-        <small>پروڈکٹ کی تفصیل یہاں لکھیں</small>
-        <div class="card-price"><span class="old-price">Rs. 5000</span> Rs. 4000</div>
-        <button class="btn-add" onclick="addToCart('Product Name', 4000)">Add to Cart</button>
-    </div>
-        </div>
+    <div class="section-title">کچن شیٹس اور کلر کیٹلاگ</div>
+    <div class="grid" id="productGrid">
         
-
-
-
-    
-
-    <div class="section-title">Latest Woods Hardware</div>
-    <div class="grid">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1586864387917-f53bc2644349?q=80&w=400" alt="Screws">
+        <div class="card product-item" data-name="یو وی شیٹ uv sheet color">
+            <img id="sheetImg" src="https://img.icons8.com/color/144/surface.png" alt="Sheet">
             <div class="card-body">
-                <h3 class="card-title">MDF Special Black Screws</h3>
-                <div class="card-price">Rs. 250</div>
-                <button class="btn-add" onclick="addToCart('Black Screws Box', 250)">Add to Cart</button>
+                <h3>پریمیم یو وی شیٹ (UV)</h3>
+                <div class="selected-color-text" id="colorText">منتخب رنگ: سلور</div>
+                
+                <div class="color-options">
+                    <div class="color-dot" style="background:#bdc3c7;" onclick="updateProduct('سلور Gray', '#bdc3c7', 'sheetImg', 'colorText')"></div>
+                    <div class="color-dot" style="background:#2c3e50;" onclick="updateProduct('ڈارک گرے', '#2c3e50', 'sheetImg', 'colorText')"></div>
+                    <div class="color-dot" style="background:#8d6e63;" onclick="updateProduct('براؤن Wood', '#8d6e63', 'sheetImg', 'colorText')"></div>
+                    <div class="color-dot" style="background:#ffffff;" onclick="updateProduct('وائٹ Gloss', '#ffffff', 'sheetImg', 'colorText')"></div>
+                </div>
+
+                <div class="card-price">Rs. 8,500</div>
+                <button class="btn-add" onclick="addWithColor('UV Sheet', 8500, 'colorText')">کارٹ میں ڈالیں</button>
             </div>
         </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1517646288021-2287f7a77545?q=80&w=400" alt="Hinges">
+        <div class="card product-item" data-name="سوفٹ کلوز قلابہ hinges">
+            <img src="https://img.icons8.com/color/144/hinges.png">
             <div class="card-body">
-                <h3 class="card-title">Hydraulic Auto Hinges</h3>
+                <h3>آٹو سوفٹ کلوز قلابہ</h3>
                 <div class="card-price">Rs. 580</div>
-                <button class="btn-add" onclick="addToCart('Auto Hinges Pair', 580)">Add to Cart</button>
+                <button class="btn-add" onclick="addToCart('Auto Hinges', 580)">کارٹ میں ڈالیں</button>
             </div>
         </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1590470249138-be14ff53d5cf?q=80&w=400" alt="Slides">
+        <div class="card product-item" data-name="ہینڈل handles">
+            <img src="https://img.icons8.com/color/144/door-handle.png">
             <div class="card-body">
-                <h3 class="card-title">18" Drawer Slides (Steel)</h3>
-                <div class="card-price">Rs. 1,900</div>
-                <button class="btn-add" onclick="addToCart('Steel Slides 18in', 1900)">Add to Cart</button>
+                <h3>لگزری کیبنٹ ہینڈل</h3>
+                <div class="card-price">Rs. 1,100</div>
+                <button class="btn-add" onclick="addToCart('Cabinet Handle', 1100)">کارٹ میں ڈالیں</button>
             </div>
         </div>
+
     </div>
 </div>
-    
+
 <div class="cart-btn-float" onclick="toggleCart()">
     <i class="fas fa-shopping-cart"></i>
     <div class="cart-count" id="count">0</div>
@@ -204,66 +159,86 @@
 
 <div id="cart-panel">
     <div class="cart-header">
-        <h2 style="margin:0; font-size:18px;"><i class="fas fa-clipboard-list"></i> Your Order</h2>
-        <button onclick="toggleCart()" style="border:none; background:none; font-size:24px; cursor:pointer;">×</button>
+        <h2 style="margin:0; font-size:18px;">آپ کا آرڈر لسٹ</h2>
+        <button onclick="toggleCart()" style="border:none; background:none; font-size:30px; cursor:pointer;">&times;</button>
     </div>
-    <div class="cart-items-list" id="cart-list"></div>
-    <div class="summary-box" id="summary-section" style="display:none;">
-        <p>Total Bill: <span>Rs. <span id="total">0</span></span></p>
-        <p style="color: var(--accent);">Booking Advance (50%): <span>Rs. <span id="adv">0</span></span></p>
+    <div id="cart-list" style="flex-grow: 1; overflow-y: auto; margin-top: 20px;"></div>
+    <div style="background: #f9f9f9; padding: 15px; border-radius: 10px;">
+        <div style="display: flex; justify-content: space-between; font-weight: bold;">
+            <span>ٹوٹل بل:</span>
+            <span>Rs. <span id="total">0</span></span>
+        </div>
     </div>
     <button class="whatsapp-btn" onclick="sendWhatsApp()">
-        <i class="fab fa-whatsapp"></i> Confirm Order on WhatsApp
+        <i class="fab fa-whatsapp"></i> واٹس ایپ پر بھیجیں
     </button>
 </div>
 
 <script>
     let cart = [];
+    let selectedColorsMap = {}; // پروڈکٹ کے رنگوں کو یاد رکھنے کے لیے
+
     function toggleCart() { document.getElementById('cart-panel').classList.toggle('active'); }
+
+    // رنگ تبدیل کرنے کا فنکشن
+    function updateProduct(colorName, colorHex, imgId, textId) {
+        document.getElementById(textId).innerText = "منتخب رنگ: " + colorName;
+        document.getElementById(imgId).style.backgroundColor = colorHex;
+        selectedColorsMap[textId] = colorName;
+    }
+
+    // رنگ کے ساتھ کارٹ میں ڈالنا
+    function addWithColor(baseName, price, textId) {
+        let color = selectedColorsMap[textId] || "سلور Gray";
+        addToCart(`${baseName} (${color})`, price);
+    }
+
     function addToCart(name, price) {
         let item = cart.find(i => i.name === name);
         item ? item.quantity++ : cart.push({name, price, quantity: 1});
         updateUI();
         if(!document.getElementById('cart-panel').classList.contains('active')) toggleCart();
     }
+
     function updateUI() {
         const list = document.getElementById('cart-list');
-        const summary = document.getElementById('summary-section');
+        let total = 0; let itemsCount = 0;
         list.innerHTML = "";
-        let total = 0;
-        let itemsCount = 0;
-        if(cart.length > 0) {
-            summary.style.display = "block";
-            cart.forEach((item) => {
-                let lineTotal = item.price * item.quantity;
-                total += lineTotal;
-                itemsCount += item.quantity;
-                list.innerHTML += `<div class="cart-item">
-                    <div><b>${item.name}</b><br><small>${item.quantity} x Rs.${item.price}</small></div>
-                    <b style="color:var(--success)">Rs.${lineTotal.toLocaleString()}</b>
-                </div>`;
-            });
-        } else {
-            list.innerHTML = "<p style='text-align:center; color:#999; margin-top:30px;'>No items in cart.</p>";
-            summary.style.display = "none";
-        }
+        cart.forEach((item, index) => {
+            total += (item.price * item.quantity);
+            itemsCount += item.quantity;
+            list.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px solid #eee; padding-bottom:5px;">
+                <div><b>${item.name}</b><br><small>${item.quantity} x ${item.price}</small></div>
+                <i class="fas fa-trash" style="color:red; cursor:pointer;" onclick="removeFromCart(${index})"></i>
+            </div>`;
+        });
         document.getElementById('count').innerText = itemsCount;
         document.getElementById('total').innerText = total.toLocaleString();
-        document.getElementById('adv').innerText = (total * 0.5).toLocaleString();
     }
+
+    function removeFromCart(index) { cart.splice(index, 1); updateUI(); }
+
+    function filterProducts() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let items = document.getElementsByClassName('product-item');
+        for (let item of items) {
+            let name = item.getAttribute('data-name').toLowerCase();
+            item.style.display = name.includes(input) ? "block" : "none";
+        }
+    }
+
     function sendWhatsApp() {
-        if(cart.length === 0) return alert("Pehle saman add karein!");
-        let number = "923130781469"; 
-        let text = "*WARIS WOODS WORKS - NEW ORDER*%0A----------------------------%0A";
+        if(cart.length === 0) return alert("کارٹ خالی ہے!");
+        let text = "*گجرات ہارڈ ویئر منڈی بہاؤالدین - نیا آرڈر*%0A--------------------------%0A";
         let total = 0;
-        cart.forEach((item) => {
-            text += `- ${item.name} (Qty: ${item.quantity})%0A`;
+        cart.forEach(item => {
+            text += `• ${item.name} (Qty: ${item.quantity})%0A`;
             total += (item.price * item.quantity);
         });
-        text += "----------------------------%0A";
-        text += `*Bill Total:* Rs. ${total.toLocaleString()}%0A*Advance (50%):* Rs. ${(total*0.5).toLocaleString()}`;
-        window.open(`https://wa.me/${number}?text=${text}`, '_blank');
+        text += `--------------------------%0A*ٹوٹل بل:* Rs. ${total.toLocaleString()}`;
+        window.open(`https://wa.me/923130781469?text=${text}`, '_blank');
     }
 </script>
+
 </body>
 </html>
