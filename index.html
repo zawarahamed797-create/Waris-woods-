@@ -1,244 +1,330 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گجرات ہارڈ ویئر اسٹور - منڈی بہاؤالدین</title>
+    <title>Waris Wood Works & Hardware Store | Professional Woodworking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        :root { --primary: #1a2a3a; --accent: #c5a059; --bg: #fdfaf5; --success: #27ae60; --dark: #111; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: #333; text-align: right; overflow-x: hidden; }
-        
-        /* Scrolling Ticker */
-        .ticker-wrap { background: var(--accent); color: white; padding: 8px 0; font-weight: bold; overflow: hidden; white-space: nowrap; position: relative; z-index: 1001; }
-        .ticker { display: inline-block; animation: marquee 25s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-
-        /* Header & Search */
-        header { background: var(--primary); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .logo { font-size: 20px; font-weight: 900; color: var(--accent); text-decoration: none; text-transform: uppercase; }
-        
-        .search-container { flex-grow: 1; margin: 0 20px; position: relative; max-width: 400px; }
-        .search-container input { width: 100%; padding: 10px 40px 10px 15px; border-radius: 25px; border: none; outline: none; font-size: 14px; text-align: right; }
-        .search-container i { position: absolute; right: 15px; top: 12px; color: #888; }
-
-        /* Hero Banner */
-        .hero { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1470&auto=format&fit=crop'); 
-            height: 250px; background-size: cover; background-position: center; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+        :root {
+            --primary-color: #d4a373; /* Wooden Gold */
+            --secondary-color: #1a1a1b; /* Dark Slate */
+            --accent-color: #faedcd;
+            --text-light: #ffffff;
+            --text-dark: #333;
         }
-        .hero h1 { font-size: 30px; margin: 0; color: var(--accent); }
 
-        /* Info Boxes */
-        .info-container { max-width: 1100px; margin: -40px auto 20px; padding: 0 20px; position: relative; z-index: 10; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .info-box { background: #fff; border-top: 4px solid var(--accent); padding: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .info-header { font-weight: 800; color: var(--primary); margin-bottom: 15px; font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        
-        .driver-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .driver-card { background: #fcf8f3; padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #efe5d9; font-size: 13px; }
-        .btn-call-sm { background: var(--primary); color: white; text-decoration: none; padding: 5px 10px; border-radius: 5px; font-weight: bold; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-        /* Product Grid */
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .section-title { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 25px; border-right: 6px solid var(--accent); padding-right: 15px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
-        
-        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; position: relative; text-align: center; }
-        .card:hover { transform: translateY(-8px); border-color: var(--accent); }
-        .card img { width: 100%; height: 160px; object-fit: contain; background: #fafafa; padding: 10px; box-sizing: border-box; transition: 0.3s; }
-        .card-body { padding: 15px; }
-        
-        /* Color Selector Styling */
-        .color-options { display: flex; gap: 8px; justify-content: center; margin: 10px 0; }
-        .color-dot { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid #ddd; transition: 0.2s; }
-        .color-dot:hover { transform: scale(1.2); border-color: var(--accent); }
-        .selected-color-text { font-size: 11px; color: var(--accent); font-weight: bold; margin-bottom: 5px; }
+        body {
+            background-color: #fefae0;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        .card-price { color: var(--success); font-weight: 800; font-size: 20px; margin: 10px 0; }
-        .btn-add { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .btn-add:hover { background: var(--accent); }
+        /* --- Header & Navigation --- */
+        header {
+            background: var(--secondary-color);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
 
-        /* Floating Cart */
-        .cart-btn-float { position: fixed; bottom: 30px; left: 30px; background: var(--primary); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1500; box-shadow: 0 8px 25px rgba(0,0,0,0.3); font-size: 24px; border: 2px solid var(--accent); }
-        .cart-count { position: absolute; top: -5px; right: -5px; background: var(--accent); color: white; width: 25px; height: 25px; border-radius: 50%; font-size: 12px; display: flex; justify-content: center; align-items: center; font-weight: bold; }
+        .logo {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeIn 2s ease-in;
+        }
 
-        /* Cart Panel */
-        #cart-panel { position: fixed; left: -400px; top: 0; width: 350px; height: 100%; background: white; box-shadow: 10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2000; padding: 20px; display: flex; flex-direction: column; box-sizing: border-box; }
-        #cart-panel.active { left: 0; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
-        .whatsapp-btn { background: #25D366; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 18px; border: none; cursor: pointer; width: 100%; margin-top: auto; }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
 
-        @media (max-width: 600px) { header { flex-direction: column; gap: 10px; } .search-container { width: 100%; } #cart-panel { width: 100%; } }
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- News Ticker --- */
+        .ticker-wrap {
+            width: 100%;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 10px 0;
+            font-weight: 600;
+            overflow: hidden;
+        }
+
+        .ticker {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1581428982868-e410dd047a90?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: slideDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 12px 35px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: 0.4s;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        /* --- Services/Products Section --- */
+        .section-padding {
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border-bottom: 5px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        .card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- WhatsApp Floating Button --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            line-height: 60px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 40px 10% 20px;
+            text-align: center;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideDown { 
+            from { transform: translateY(-50px); opacity: 0; } 
+            to { transform: translateY(0); opacity: 1; } 
+        }
     </style>
 </head>
 <body>
 
-<div class="ticker-wrap">
-    <div class="ticker">
-        🔥 گجرات ہارڈ ویئر اسٹور منڈی بہاؤالدین: تمام کچن ایکسیسریز پر خصوصی رعایت | 🚚 فاسٹ ڈلیوری | 📞 رابطہ کریں: 0313-0781469
-    </div>
-</div>
+    <header>
+        <div class="logo">Waris Wood Works</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#hardware">Hardware</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
 
-<header>
-    <a href="#" class="logo">GUJRAT <span>HARDWARE</span></a>
-    <div class="search-container">
-        <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="آئٹم یا رنگ تلاش کریں..." onkeyup="filterProducts()">
-    </div>
-    <a href="tel:+923130781469" class="btn-call-sm" style="background:var(--accent); padding:10px 15px;">0313-0781469</a>
-</header>
-
-<div class="hero">
-    <h1>گجرات کچن ہارڈ ویئر</h1>
-    <p>منڈی بہاؤالدین میں کچن الماری ہارڈ ویئر کے ماہر</p>
-</div>
-
-<div class="info-container">
-    <div class="info-box">
-        <div class="info-header"><i class="fas fa-truck"></i> ٹرانسپورٹ ڈلیوری</div>
-        <div class="driver-grid">
-            <div class="driver-card"><div>اسلم خان<br><small>لوکل</small></div><a href="tel:03130781469" class="btn-call-sm">کال</a></div>
-            <div class="driver-card"><div>عرفان جٹ<br><small>سٹی</small></div><a href="tel:03130781469" class="btn-call-sm">کال</a></div>
+    <div class="ticker-wrap">
+        <div class="ticker">
+            NEW ARRIVAL: Premium Turkish Door Handles & Custom L-Shape Kitchen Cabinets | Special Discount on Plywood & MDF Sheets | Contact for Interior Woodwork!
         </div>
     </div>
-    <div class="info-box">
-        <div class="info-header"><i class="fas fa-map-marker-alt"></i> دکان کا پتہ</div>
-        <p style="font-size: 14px; margin: 0;">پھالیہ روڈ، نزد وارث ہسپتال، منڈی بہاؤالدین۔</p>
-        <a href="#" style="color:var(--accent); font-weight:bold; font-size:13px; text-decoration:none;">گوگل میپ پر راستہ دیکھیں</a>
-    </div>
-</div>
 
-<div class="container">
-    <div class="section-title">کچن شیٹس اور کلر کیٹلاگ</div>
-    <div class="grid" id="productGrid">
-        
-        <div class="card product-item" data-name="یو وی شیٹ uv sheet color">
-            <img id="sheetImg" src="https://img.icons8.com/color/144/surface.png" alt="Sheet">
-            <div class="card-body">
-                <h3>پریمیم یو وی شیٹ (UV)</h3>
-                <div class="selected-color-text" id="colorText">منتخب رنگ: سلور</div>
-                
-                <div class="color-options">
-                    <div class="color-dot" style="background:#bdc3c7;" onclick="updateProduct('سلور Gray', '#bdc3c7', 'sheetImg', 'colorText')"></div>
-                    <div class="color-dot" style="background:#2c3e50;" onclick="updateProduct('ڈارک گرے', '#2c3e50', 'sheetImg', 'colorText')"></div>
-                    <div class="color-dot" style="background:#8d6e63;" onclick="updateProduct('براؤن Wood', '#8d6e63', 'sheetImg', 'colorText')"></div>
-                    <div class="color-dot" style="background:#ffffff;" onclick="updateProduct('وائٹ Gloss', '#ffffff', 'sheetImg', 'colorText')"></div>
-                </div>
+    <section class="hero" id="home">
+        <h1>Crafting Excellence in Every Cut</h1>
+        <p>Providing the finest modular kitchens, wardrobes, and high-quality hardware products in Mandi Bahauddin.</p>
+        <a href="https://wa.me/923000000000" class="btn-primary">Get A Free Quote</a>
+    </section>
 
-                <div class="card-price">Rs. 8,500</div>
-                <button class="btn-add" onclick="addWithColor('UV Sheet', 8500, 'colorText')">کارٹ میں ڈالیں</button>
+    <section class="section-padding" id="services">
+        <h2 class="section-title">Our Specialized Services</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-kitchen-set"></i>
+                <h3>Modular Kitchens</h3>
+                <p>Custom 3D designs for L-shape, U-shape, and contemporary kitchens using termite-proof MDF.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-bed"></i>
+                <h3>Luxury Wardrobes</h3>
+                <p>Space-saving sliding and open-door wardrobes with premium soft-close fittings.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-couch"></i>
+                <h3>Custom Furniture</h3>
+                <p>High-quality beds, dining tables, and sofa sets tailored to your home interior.</p>
             </div>
         </div>
+    </section>
 
-        <div class="card product-item" data-name="سوفٹ کلوز قلابہ hinges">
-            <img src="https://img.icons8.com/color/144/hinges.png">
-            <div class="card-body">
-                <h3>آٹو سوفٹ کلوز قلابہ</h3>
-                <div class="card-price">Rs. 580</div>
-                <button class="btn-add" onclick="addToCart('Auto Hinges', 580)">کارٹ میں ڈالیں</button>
+    <section class="section-padding" id="hardware" style="background-color: #ede0d4;">
+        <h2 class="section-title">Quality Hardware Store</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-door-open"></i>
+                <h3>Door Fittings</h3>
+                <p>Heavy-duty locks, designer handles, and smooth hinges for all types of doors.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-hammer"></i>
+                <h3>Professional Tools</h3>
+                <p>Branded carpentry and construction tools for professionals and DIY enthusiasts.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-layer-group"></i>
+                <h3>Plywood & MDF</h3>
+                <p>Wide variety of thicknesses and finishes available in Plywood, MDF, and Lasani boards.</p>
             </div>
         </div>
+    </section>
 
-        <div class="card product-item" data-name="ہینڈل handles">
-            <img src="https://img.icons8.com/color/144/door-handle.png">
-            <div class="card-body">
-                <h3>لگزری کیبنٹ ہینڈل</h3>
-                <div class="card-price">Rs. 1,100</div>
-                <button class="btn-add" onclick="addToCart('Cabinet Handle', 1100)">کارٹ میں ڈالیں</button>
-            </div>
+    <footer id="contact">
+        <h3>Waris Wood Works & Hardware Store</h3>
+        <p>Main Bazaar, Mandi Bahauddin, Punjab</p>
+        <p>Email: info@wariswoodworks.com | Phone: +92 300 1234567</p>
+        <div class="social-icons" style="margin-top: 20px;">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
+        <hr style="margin: 20px 0; border-color: #444;">
+        <p>&copy; 2026 Waris Wood Works. All Rights Reserved.</p>
+    </footer>
 
-    </div>
-</div>
-
-<div class="cart-btn-float" onclick="toggleCart()">
-    <i class="fas fa-shopping-cart"></i>
-    <div class="cart-count" id="count">0</div>
-</div>
-
-<div id="cart-panel">
-    <div class="cart-header">
-        <h2 style="margin:0; font-size:18px;">آپ کا آرڈر لسٹ</h2>
-        <button onclick="toggleCart()" style="border:none; background:none; font-size:30px; cursor:pointer;">&times;</button>
-    </div>
-    <div id="cart-list" style="flex-grow: 1; overflow-y: auto; margin-top: 20px;"></div>
-    <div style="background: #f9f9f9; padding: 15px; border-radius: 10px;">
-        <div style="display: flex; justify-content: space-between; font-weight: bold;">
-            <span>ٹوٹل بل:</span>
-            <span>Rs. <span id="total">0</span></span>
-        </div>
-    </div>
-    <button class="whatsapp-btn" onclick="sendWhatsApp()">
-        <i class="fab fa-whatsapp"></i> واٹس ایپ پر بھیجیں
-    </button>
-</div>
-
-<script>
-    let cart = [];
-    let selectedColorsMap = {}; // پروڈکٹ کے رنگوں کو یاد رکھنے کے لیے
-
-    function toggleCart() { document.getElementById('cart-panel').classList.toggle('active'); }
-
-    // رنگ تبدیل کرنے کا فنکشن
-    function updateProduct(colorName, colorHex, imgId, textId) {
-        document.getElementById(textId).innerText = "منتخب رنگ: " + colorName;
-        document.getElementById(imgId).style.backgroundColor = colorHex;
-        selectedColorsMap[textId] = colorName;
-    }
-
-    // رنگ کے ساتھ کارٹ میں ڈالنا
-    function addWithColor(baseName, price, textId) {
-        let color = selectedColorsMap[textId] || "سلور Gray";
-        addToCart(`${baseName} (${color})`, price);
-    }
-
-    function addToCart(name, price) {
-        let item = cart.find(i => i.name === name);
-        item ? item.quantity++ : cart.push({name, price, quantity: 1});
-        updateUI();
-        if(!document.getElementById('cart-panel').classList.contains('active')) toggleCart();
-    }
-
-    function updateUI() {
-        const list = document.getElementById('cart-list');
-        let total = 0; let itemsCount = 0;
-        list.innerHTML = "";
-        cart.forEach((item, index) => {
-            total += (item.price * item.quantity);
-            itemsCount += item.quantity;
-            list.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px solid #eee; padding-bottom:5px;">
-                <div><b>${item.name}</b><br><small>${item.quantity} x ${item.price}</small></div>
-                <i class="fas fa-trash" style="color:red; cursor:pointer;" onclick="removeFromCart(${index})"></i>
-            </div>`;
-        });
-        document.getElementById('count').innerText = itemsCount;
-        document.getElementById('total').innerText = total.toLocaleString();
-    }
-
-    function removeFromCart(index) { cart.splice(index, 1); updateUI(); }
-
-    function filterProducts() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let items = document.getElementsByClassName('product-item');
-        for (let item of items) {
-            let name = item.getAttribute('data-name').toLowerCase();
-            item.style.display = name.includes(input) ? "block" : "none";
-        }
-    }
-
-    function sendWhatsApp() {
-        if(cart.length === 0) return alert("کارٹ خالی ہے!");
-        let text = "*گجرات ہارڈ ویئر منڈی بہاؤالدین - نیا آرڈر*%0A--------------------------%0A";
-        let total = 0;
-        cart.forEach(item => {
-            text += `• ${item.name} (Qty: ${item.quantity})%0A`;
-            total += (item.price * item.quantity);
-        });
-        text += `--------------------------%0A*ٹوٹل بل:* Rs. ${total.toLocaleString()}`;
-        window.open(`https://wa.me/923130781469?text=${text}`, '_blank');
-    }
-</script>
+    <a href="https://wa.me/923001234567?text=Assalam-o-Alaikum, I am interested in your services." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
